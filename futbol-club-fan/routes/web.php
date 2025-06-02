@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\LoginController;
 
 Route::get('/index', function () {
     return view('welcome');
@@ -13,3 +14,20 @@ Route::get('/', function () {
 
 Route::get('/productos', [ProductController::class, 'index']);
 Route::get('/usuario', [ProductController::class, 'index']);
+
+
+Route::get('/ingreso', function () {
+    return view('login.login');
+});
+
+Route::get('/registro', function () {
+    return view('login.registration');
+});
+
+Route::get('/privada', function () {
+    return view('private');
+});
+
+Route::post('/registration', [LoginController::class, 'register']);
+Route::post('/login', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');

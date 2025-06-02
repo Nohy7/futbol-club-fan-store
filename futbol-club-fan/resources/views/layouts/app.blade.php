@@ -22,9 +22,32 @@
       <a href="/productos">
         <img src="{{ asset('img/search-ico.png') }}" alt="Buscar">
       </a>
-      <a href="#usuario">
+
+      @auth
+        <div class="user-menu">
+            <!-- Icono de usuario (puede ser una imagen o un ícono dinámico) -->
+            <div class="user-icon">
+                <img src="{{ asset('img/user-login.png') }}" alt="Usuario">
+            </div>
+
+            <!-- Menú desplegable -->
+            <div class="dropdown-menu">
+                <div class="dropdown-header">
+                {{ Auth::user()->name }}
+                </div>
+                <!--<a href="/perfil">Mi cuenta</a>-->
+                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="dropdown-button">Salir</button>
+                </form>
+            </div>
+        </div>
+        @else
+        <a href="/ingreso">
         <img src="{{ asset('img/user-ico.png') }}" alt="Usuario">
-      </a>
+        </a>
+        @endauth
+
       <a href="#carrito">
         <img src="{{ asset('img/shopping-bag-ico.png') }}" alt="Bolsa">
       </a>

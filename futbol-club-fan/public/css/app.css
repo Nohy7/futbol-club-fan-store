@@ -61,10 +61,242 @@ header {
     vertical-align: middle;
 }
 
+/* Submenu usuario*/
+.user-menu {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: var(--color-secondary);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 0;
+}
+
+.dropdown-header {
+    padding: 8px 16px;
+    font-weight: bold;
+    color: #000;
+    border-bottom: 1px solid #eee;
+}
+
+.dropdown-menu a,
+.dropdown-button {
+    display: block;
+    padding: 5px 16px;
+    text-align: left;
+    text-decoration: underline;
+    color: #000;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: lighter;
+}
+
+.dropdown-menu a:hover,
+.dropdown-button:hover {
+    background-color: var(--color-primary);
+    opacity: 1;
+}
+
+.user-menu:hover .dropdown-menu {
+    display: block;
+}
+
+/* Inicio */
+
+.rectangle {
+    margin-left: auto;
+    width: 485px;
+    height: 65px;
+    background: repeating-linear-gradient(45deg,
+            /* Ángulo de las líneas diagonales */
+            #fff,
+            /* Color inicial */
+            #fff 20px,
+            /* Ancho de la línea */
+            transparent 0px,
+            transparent 65px
+            /* Espaciado entre líneas */
+        );
+    rotate: 180deg;
+}
+
+/* Contenedor del rectángulo */
+.rectangulo {
+    margin-left: 55px;
+    position: relative;
+    width: 220px;
+    height: 45px;
+    overflow: hidden;
+}
+
+/* Estilo base para los triángulos isósceles */
+.triangulo {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 20px 0 20px 30px;
+    /* top right bottom left */
+    border-color: transparent transparent transparent var(--color-primary);
+}
+
+/* Posicionamiento individual de cada triángulo */
+.t1 {
+    top: 0;
+    left: 0px;
+}
+
+.t2 {
+    top: 0;
+    left: 45px;
+}
+
+.t3 {
+    top: 0;
+    left: 90px;
+}
+
+.t4 {
+    top: 0;
+    left: 135px;
+}
+
+.t5 {
+    top: 0;
+    left: 180px;
+}
+
+.t6 {
+    top: 0;
+    left: 225px;
+}
 
 .banner {
-    width: 70vw;
-    font-size: 7rem;
+    margin-left: 75px;
+    margin-top: 40px;
+    max-width: 55%;
+    font-size: 6rem;
     font-weight: bold;
     color: var(--color-secondary);
+}
+
+.uniform {
+    position: absolute;
+    right: 5%;
+    top: 180px;
+    width: 30%;
+}
+
+.footer {
+    position: absolute;
+    bottom: 50px;
+    margin-left: 100px;
+    display: flex;
+    align-items: center;
+}
+
+.text-pattern {
+    display: flex;
+    flex-direction: column;
+    color: transparent;
+    font-size: 5rem;
+    font-weight: 900;
+    margin-left: 65px;
+}
+
+.text-pattern span {
+    max-height: 80px;
+    -webkit-text-stroke: 0.5px var(--color-primary);
+}
+
+.social-media {
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+    color: var(--color-secondary);
+}
+
+.social-media span {
+    padding: 10px;
+}
+
+/*Formulario registro */
+.form-container {
+    margin: 130px auto 0 auto;
+    width: 100%;
+    max-width: 380px;
+    color: var(--color-secondary);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    font-size: 18px;
+}
+
+button {
+    width: 100%;
+    padding: 5px;
+    background-color: var(--color-primary);
+    color: #000000;
+    border: none;
+    cursor: pointer;
+    font-family: 'Khand', sans-serif;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+button:hover {
+    opacity: 0.6;
+}
+
+.login-link {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: var(--color-secondary);
+    font-size: 14px;
+}
+
+.login-link:hover {
+    color: var(--color-primary);
+    text-decoration-color: var(--color-primary);
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.error {
+    color: red;
+    font-size: 0.9em;
+    display: none;
+    margin-top: 5px;
 }
