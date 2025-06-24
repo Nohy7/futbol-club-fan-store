@@ -15,13 +15,15 @@
 
     <div class="products">
         @foreach ($products as $product)
-            <div class="product-card">
-                <img src="{{ asset('img/catalog/' . $product->url_image) }}" alt="{{ $product->name }}">
-                <div class="product-info">
-                    <p class="price">{{ $product->formatted_price }}</p>
-                    <p class="name">{{ $product->name }}</p>
+            <a href="{{ route('product.show', $product->id) }}" class="product-card-link">
+                <div class="product-card">
+                    <img src="{{ asset('img/catalog/' . $product->url_image) }}" alt="{{ $product->name }}">
+                    <div class="product-info">
+                        <p class="price">{{ $product->formatted_price }}</p>
+                        <p class="name">{{ $product->name }}</p>
+                    </div>
                 </div>
-            </div>
+            </a>
         @endforeach
     </div>
 
@@ -38,23 +40,9 @@
         <form id="filter-form" action="/productos" method="GET">
             <input type="hidden" name="q" value="{{ request('q') }}">
             <div class="filter-body">
-                <h4>Marcas</h4>
-                @php
-                    $brands = ['Nike', 'Adidas', 'Puma', 'Reebok'];
-                    $selectedBrands = request('brands', []);
-                @endphp
-
-                @foreach ($brands as $brand)
-                    <label>
-                        <input type="checkbox" name="brands[]" value="{{ $brand }}"
-                            {{ in_array($brand, $selectedBrands) ? 'checked' : '' }}>
-                        {{ $brand }}
-                    </label>
-                @endforeach
-
                 <h4>Categorías</h4>
                 @php
-                    $categories = ['Zapatillas', 'Ropa', 'Accesorios'];
+                    $categories = ['JUGADOR', 'AFICIONADO'];
                     $selectedCategories = request('categories', []);
                 @endphp
 
@@ -66,18 +54,32 @@
                     </label>
                 @endforeach
 
+                <h4>Accesorios</h4>
+                @php
+                    $brands = ['MEDIAS', '(MEDIAS+CANILLERAS)'];
+                    $selectedBrands = request('brands', []);
+                @endphp
+
+                @foreach ($brands as $brand)
+                    <label>
+                        <input type="checkbox" name="brands[]" value="{{ $brand }}"
+                            {{ in_array($brand, $selectedBrands) ? 'checked' : '' }}>
+                        {{ $brand }}
+                    </label>
+                @endforeach
+
                 <h4>Precio</h4>
                 <div>
-                    <label>Desde: $<input class="no-border" type="number" name="min_price" value="{{ request('min_price') }}"
-                            min="0"></label>
-                    <label>Hasta: $<input class="no-border" type="number" name="max_price" value="{{ request('max_price') }}"
-                            min="0"></label>
+                    <label>Desde: $<input class="no-border" type="number" name="min_price"
+                            value="{{ request('min_price') }}" min="0"></label>
+                    <label>Hasta: $<input class="no-border" type="number" name="max_price"
+                            value="{{ request('max_price') }}" min="0"></label>
                 </div>
             </div>
             <div class="filter-footer">
-            <button class="clear-filter-btn" type="button" onclick="resetFilters()">BORRAR FILTRO</button>
-            <button class="apply-filter-btn" type="submit">APLICAR</button>
-        </div>
+                <button class="clear-filter-btn" type="button" onclick="resetFilters()">BORRAR FILTRO</button>
+                <button class="apply-filter-btn" type="submit">APLICAR</button>
+            </div>
         </form>
     </div>
 @endsection

@@ -58,11 +58,37 @@
                 </a>
             @endauth
 
-            <a href="#carrito">
+            <a href="#carrito" id="cart-icon">
                 <img src="{{ asset('img/shopping-bag-ico.png') }}" alt="Bolsa">
+                <span id="cart-count" class="cart-badge">0</span>
             </a>
         </div>
     </header>
+
+    <div class="overlay" id="cart-overlay"></div>
+
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>BOLSA DE COMPRAS (<span id="cart-counter">0</span>)</h3>
+        </div>
+
+        <div class="cart-items-container" id="cart-items-container">
+            <p>No hay productos aún.</p>
+        </div>
+
+        <div class="cart-footer">
+            <div class="cart-total">
+                <p>Total estimado:</p>
+                <p>$ <span id="cart-total">0</span></p>
+            </div>
+
+            @auth
+                <a href="/checkout" class="buy-cart-btn">FINALIZAR COMPRA</a>
+            @else
+                <a href="/ingreso" class="buy-cart-btn">INICIAR SESIÓN</a>
+            @endauth
+        </div>
+    </div>
 
     @yield('content')
     <script src="{{ asset('js/script.js') }}"></script>

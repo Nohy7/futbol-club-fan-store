@@ -72,3 +72,7 @@ php artisan make:controller <name e.g. SumaController>
 
 Crear modelo
 php artisan make:model <name e.g. Producto> -m
+
+
+john.doe@gmail.com
+qwerty

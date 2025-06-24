@@ -27,15 +27,14 @@ class ProductController extends Controller
             $productsQuery->whereRaw('LOWER(name) LIKE ?', ["%" . strtolower($query) . "%"]);
         }
 
-        /*
         if (!empty($brands)) {
-            $productsQuery->whereIn('brand', $brands);
+            $productsQuery->whereIn('accessory', $brands);
         }
 
         if (!empty($categories)) {
             $productsQuery->whereIn('category', $categories);
         }
-        */
+
 
         if ($minPrice !== null && is_numeric($minPrice)) {
             $productsQuery->where('price', '>=', $minPrice);
@@ -45,14 +44,20 @@ class ProductController extends Controller
             $productsQuery->where('price', '<=', $maxPrice);
         }
 
-        $products = $productsQuery->paginate(4)->appends([
+        $products = $productsQuery->paginate(8)->appends([
             'q' => $query,
-            //'brands' => $brands,
-            //'categories' => $categories,
+            'brands' => $brands,
+            'categories' => $categories,
             'min_price' => $minPrice,
             'max_price' => $maxPrice,
         ]);
 
         return view('products.index', compact('products'));
+    }
+
+    public function show($id)
+    {
+        $product = Product::findOrFail($id);
+        return view('products.detail', compact('product'));
     }
 }

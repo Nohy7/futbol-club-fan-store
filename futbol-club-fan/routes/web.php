@@ -13,6 +13,7 @@ Route::get('/', function () {
 });
 
 Route::get('/productos', [ProductController::class, 'indexPage']);
+Route::get('/productos/{id}', [ProductController::class, 'show'])->name('product.show');
 Route::get('/usuario', [ProductController::class, 'index']);
 
 
