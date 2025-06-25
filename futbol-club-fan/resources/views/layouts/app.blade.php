@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Khand:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="{{ asset('logo.png') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 <body>
@@ -58,7 +59,7 @@
                 </a>
             @endauth
 
-            <a href="#carrito" id="cart-icon">
+            <a id="cart-icon">
                 <img src="{{ asset('img/shopping-bag-ico.png') }}" alt="Bolsa">
                 <span id="cart-count" class="cart-badge">0</span>
             </a>
@@ -83,10 +84,27 @@
             </div>
 
             @auth
-                <a href="/checkout" class="buy-cart-btn">FINALIZAR COMPRA</a>
+                <a id="finalizeOrderBtn" class="buy-cart-btn">FINALIZAR COMPRA</a>
             @else
                 <a href="/ingreso" class="buy-cart-btn">INICIAR SESIÓN</a>
             @endauth
+        </div>
+    </div>
+
+    <div id="loadingModal" class="modal-overlay">
+        <div class="modal-content">
+            <h3>Procesando tu pedido...</h3>
+            <div class="spinner"></div>
+            <p>Por favor espera</p>
+        </div>
+    </div>
+
+    <div id="confirmationModal" class="modal-overlay">
+        <div class="modal-content">
+            <h3>✅ Pedido realizado con éxito</h3>
+            <p>Tu pedido ha sido registrado correctamente.</p>
+            <p><strong>Número de pedido:</strong> <span id="orderIdText">123456</span></p>
+            <button id="closeModalBtn" class="buy-cart-btn">Aceptar</button>
         </div>
     </div>
 

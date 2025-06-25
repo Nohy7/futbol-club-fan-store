@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\OrderController;
 
 Route::get('/index', function () {
     return view('welcome');
@@ -32,3 +33,4 @@ Route::get('/privada', function () {
 Route::post('/registration', [LoginController::class, 'register']);
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::post('/order', [OrderController::class, 'store'])->name('order.create')->middleware('auth');
