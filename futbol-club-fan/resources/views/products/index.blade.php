@@ -3,7 +3,11 @@
 @section('content')
     <div class="filter-container">
         @if (request()->has('q'))
-            <p>Buscando: <strong>{{ request('q') }}</strong></p>
+            <div class="search-tag">
+                Buscando: <strong>{{ request('q') }}</strong>
+                <a href="{{ route('product.index',array_filter(request()->all(),function ($key) {return $key !== 'q';},ARRAY_FILTER_USE_KEY)) }}"
+                    class="remove-filter">✖</a>
+            </div>
         @endif
 
         <!-- Botón para abrir el filtro -->

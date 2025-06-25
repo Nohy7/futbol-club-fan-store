@@ -859,3 +859,38 @@ button:hover {
         max-width: 100%;
     }
 }
+
+.names {
+    position: absolute;
+    bottom: 3px;
+    left: 3px;
+}
+
+.names p:hover {
+    color: var(--color-primary);
+}
+
+.names p {
+    margin: 0;
+    color: var(--color-secondary);
+}
+
+.search-tag {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    position: relative;
+    top: 2px;
+}
+
+.remove-filter {
+    margin-left: 8px;
+    text-decoration: none;
+    color: var(--color-primary);
+    font-weight: bold;
+}
+
+.remove-filter:hover {
+    color: var(--color-secondary);
+}

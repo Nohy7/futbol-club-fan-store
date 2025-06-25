@@ -5,15 +5,13 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrderController;
 
-Route::get('/index', function () {
-    return view('welcome');
-});
+
 
 Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/productos', [ProductController::class, 'indexPage']);
+Route::get('/productos', [ProductController::class, 'indexPage'])->name('product.index');
 Route::get('/productos/{id}', [ProductController::class, 'show'])->name('product.show');
 Route::get('/usuario', [ProductController::class, 'index']);
 
